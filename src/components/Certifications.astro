@@ -1,0 +1,68 @@
+---
+import { siteConfig } from "../config";
+const hasCertifications = siteConfig.certifications && siteConfig.certifications.length > 0;
+---
+
+{
+  hasCertifications && (
+    <section id="certifications" class="p-8 sm:p-12 md:p-16 lg:p-24">
+      <div>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+          <div class="lg:col-span-4">
+            <h2 class="text-3xl sm:text-4xl md:text-5xl xl:text-7xl font-bold text-gray-900">
+              Certificaciones
+            </h2>
+            <div
+              class="w-[75px] h-[5px] mt-2 rounded-full"
+              style={`background-color: ${siteConfig.accentColor}`}
+            />
+            <p class="mt-6 text-base text-gray-600">
+              Certificaciones profesionales de Google Cloud, LinkedIn Learning, DataCamp e IBM SkillsBuild.
+            </p>
+          </div>
+
+          <div class="lg:col-span-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {siteConfig.certifications.map((cert, index) => (
+                <div
+                  class="group bg-white rounded-xl shadow-sm border border-gray-200 p-5 hover:shadow-lg hover:border-gray-300 transition-all duration-300"
+                >
+                  <div class="flex items-start gap-4">
+                    <div
+                      class="flex-shrink-0 w-12 h-12 rounded-lg flex items-center justify-center font-bold text-white text-lg transition-transform duration-300 group-hover:scale-110"
+                      style={`background-color: ${siteConfig.accentColor}`}
+                    >
+                      {index + 1}
+                    </div>
+                    <div class="flex-1">
+                      <h3 class="text-base font-semibold text-gray-900 mb-1">
+                        {cert.name}
+                      </h3>
+                      <p class="text-sm text-gray-600 mb-1">
+                        {cert.issuer}
+                      </p>
+                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-gray-100 text-gray-700">
+                        {cert.year}
+                      </span>
+                    </div>
+                    <svg
+                      class="w-5 h-5 text-green-500 flex-shrink-0"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clip-rule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
